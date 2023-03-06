@@ -1,0 +1,10 @@
+<h1>new 페이지</h1>
+
+<form method="POST" action="{% url 'blog:create' %}">
+    {% csrf_token %}
+    제목: <input type="text" name="title"/>
+    글: <textarea name="content" id="" cols="30" rows="10"></textarea>
+    <input type="submit" value="작성하기"/>
+</form>
+
+<a href="{% url 'blog:read_all' %}">홈으로 가기</a>

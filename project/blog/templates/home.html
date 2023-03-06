@@ -1,0 +1,33 @@
+<h1>멋사 11기 Blog 프로젝트</h1>
+<br>
+
+{% if user.is_authenticated %}
+<!--로그인 상태-->
+<h3>안녕하세요, {{user.username}} 님!</h3>
+<a href="{% url 'user:signout' %}">로그아웃</a>
+<hr>
+<a href="{% url 'blog:new' %}">새 글 작성</a>
+<hr>
+{% for blog in blogs %}
+<div>
+    <a href="{% url 'blog:read_one' blog.id %}">
+        <p>제목: {{blog.title}}</p>
+        <p>글: {{blog.content}}</p>
+        <p>작성자: {{blog.writer}}</p>
+        <p>생성시기: {{blog.created_at}}</p>
+        <p>수정시기: {{blog.updated_at}}</p>
+        <p>요약: {{blog.summary}}</p>
+        <hr>
+    </a>
+</div>
+<br>
+{% endfor %}
+
+{% else %}
+<!--로그아웃 상태-->
+<a href="{% url 'user:signup' %}">회원가입</a>
+<a href="{% url 'user:signin' %}">로그인</a>
+<h3>로그인해야 게시판을 이용하실 수 있습니다.</h3>
+{% endif %}
+<hr>
+

@@ -1,0 +1,8 @@
+<h1>login 페이지</h1>
+
+<form method="POST" action="{% url 'user:signin' %}">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="로그인하기" />
+</form>
+<a href="{% url 'blog:read_all' %}">홈으로 가기</a>

@@ -1,0 +1,16 @@
+<h1>detail 페이지</h1>
+
+<p>제목: {{blog.title}}</p>
+<p>글: {{blog.content}}</p>
+<p>작성자: {{blog.writer}}</p>
+<p>생성시기: {{blog.created_at}}</p>
+<p>수정시기: {{blog.updated_at}}</p>
+
+{% if user == blog.writer %}
+<a href="{% url 'blog:read_all' %}">홈</a>
+<a href="{% url 'blog:edit' blog.id %}">수정하기</a>
+<a href="{% url 'blog:delete' blog.id %}">삭제</a>
+{% else %}
+<a href="{% url 'blog:read_all' %}">홈</a>
+{% endif %}
+
